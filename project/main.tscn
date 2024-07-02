@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=3 uid="uid://wp31bdkw2ujt"]
+
+[ext_resource type="Script" path="res://game/gamemode.gd" id="1_8jxqk"]
+[ext_resource type="PackedScene" uid="uid://dhlm0r3kgrbs5" path="res://game/paddle.tscn" id="2_67h6p"]
+[ext_resource type="PackedScene" uid="uid://cyvsrij56sdbt" path="res://game/ball.tscn" id="3_xnpqu"]
+[ext_resource type="Texture2D" uid="uid://cbvi147u2de24" path="res://assets/GiantLightStudios - SimpleShapes/square_64.png" id="4_vvabt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ne3n4"]
+size = Vector2(512, 64)
+
+[node name="Main" type="Node"]
+
+[node name="GameMode" type="Node" parent="."]
+script = ExtResource("1_8jxqk")
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="Paddle" parent="World" instance=ExtResource("2_67h6p")]
+position = Vector2(498, 435)
+collision_mask = 2
+
+[node name="Ball" parent="World" instance=ExtResource("3_xnpqu")]
+position = Vector2(498, 78)
+
+[node name="Map" type="Node2D" parent="World"]
+
+[node name="Boundary" type="StaticBody2D" parent="World/Map"]
+position = Vector2(500, 479)
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Map/Boundary"]
+scale = Vector2(8, 1)
+texture = ExtResource("4_vvabt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Map/Boundary"]
+shape = SubResource("RectangleShape2D_ne3n4")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Menu" type="MarginContainer" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InGame" type="MarginContainer" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 69
+theme_override_constants/margin_top = 69
+
+[node name="ScoreLabel" type="Label" parent="UI/InGame"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Bonks: 0"
