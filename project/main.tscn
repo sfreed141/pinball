@@ -89,6 +89,9 @@ shape = SubResource("RectangleShape2D_hpi33")
 [node name="Bumper" parent="World/Map" instance=ExtResource("4_ro6ew")]
 position = Vector2(304, 288)
 
+[node name="Bumper2" parent="World/Map" instance=ExtResource("4_ro6ew")]
+position = Vector2(602, 186)
+
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Menu" type="MarginContainer" parent="UI"]
