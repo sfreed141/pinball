@@ -18,6 +18,7 @@ var paddles
 const RESPAWN_AREA_GROUP = &"respawn_area"
 const PLUNGER_AREA_GROUP = &"plunger_area"
 const BALL_SPAWN_GROUP = &"ball_spawn"
+const BUMPER_GROUP = &"bumper"
 
 const BALL_SCENE = preload("res://game/ball.tscn")
 var _ball
@@ -34,6 +35,10 @@ func _ready():
 	var plunger_areas = get_tree().get_nodes_in_group(PLUNGER_AREA_GROUP)
 	for r in plunger_areas:
 		r.body_entered.connect(_plungerReady)
+	
+	var bumpers = get_tree().get_nodes_in_group(BUMPER_GROUP)
+	for b in bumpers:
+		b.bumped.connect(_on_bumper_bumped)
 	
 	var p = ingame_ui
 	while p is CanvasItem or p is CanvasLayer:
@@ -58,6 +63,10 @@ func _plungerReady(ball):
 
 func _on_paddle_bonk():
 	score += 100
+	_update_ui()
+
+func _on_bumper_bumped(bumper):
+	score += bumper.points
 	_update_ui()
 
 func _update_ui():
