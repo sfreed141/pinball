@@ -6,7 +6,7 @@ extends Node
 # 1. Groups: In the Node window, add a group to the desired node. Then you can access in code like get_tree().get_first_node_in_group()
 # 2. Unique Names: in Scene window, "RMB | Access as Unique Name" and then can reference like %MyNode.
 
-@onready var ingame_ui = %InGame
+@onready var ingame_ui = %InGameUI
 @onready var score_label = %ScoreLabel
 @onready var highscore_label = %HighScoreLabel
 var score = 0
