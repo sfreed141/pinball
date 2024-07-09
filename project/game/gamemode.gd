@@ -9,8 +9,18 @@ extends Node
 @onready var ingame_ui = %InGame
 @onready var score_label = %ScoreLabel
 @onready var highscore_label = %HighScoreLabel
-var score = 0
+@onready var lives_label = %LivesLabel
+
+
+var score: int = 0:
+	set(value):
+		if score != value:
+			score = value
+			_update_ui()
+	get:
+		return score
 var high_score = 0
+var lives = 3
 
 const PADDLE_GROUP = &"paddle"	# &"" is a StringName literal. It's for unique strings and is faster for comparisons.
 var paddles
@@ -53,10 +63,12 @@ func _spawn_ball():
 
 func _on_respawn_ball(ball):
 	ball.queue_free()
-	high_score = score if score > high_score else high_score
-	score = 0
-	_update_ui()
 	_spawn_ball()
+	lives -= 1
+	if (lives == 0):
+		print("Game Restarted")
+		high_score = score if score > high_score else high_score
+		score = 0
 	
 func _plungerReady(ball):
 	ball.launched = false
@@ -72,4 +84,5 @@ func _on_bumper_bumped(bumper):
 func _update_ui():
 	highscore_label.text = "High Bonks: %s" % [ high_score ]
 	score_label.text = "Bonks: %s" % [ score ]
-	
+	lives_label.text = "Balls: %s" % [ lives ]
+

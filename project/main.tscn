@@ -2,15 +2,8 @@
 
 [ext_resource type="Script" path="res://game/gamemode.gd" id="1_8jxqk"]
 [ext_resource type="PackedScene" uid="uid://dhlm0r3kgrbs5" path="res://game/paddle.tscn" id="2_67h6p"]
-
 [ext_resource type="PackedScene" uid="uid://bwoyukoyw4e4d" path="res://game/wall.tscn" id="3_kdlmg"]
-
 [ext_resource type="PackedScene" uid="uid://biuqxwo0rr4k7" path="res://game/bumper.tscn" id="4_ro6ew"]
-[ext_resource type="Texture2D" uid="uid://cbvi147u2de24" path="res://assets/GiantLightStudios - SimpleShapes/square_64.png" id="4_vvabt"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ne3n4"]
-size = Vector2(512, 64)
-
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hpi33"]
 size = Vector2(1149, 69)
@@ -146,6 +139,14 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "Bonks: 0"
+label_settings = SubResource("LabelSettings_sdi16")
+
+[node name="LivesLabel" type="Label" parent="UI/InGame/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Balls: 3"
 label_settings = SubResource("LabelSettings_sdi16")
 
 [node name="HighScoreLabel" type="Label" parent="UI/InGame/VBoxContainer"]
