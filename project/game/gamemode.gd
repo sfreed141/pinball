@@ -16,6 +16,7 @@ const PADDLE_GROUP = &"paddle"	# &"" is a StringName literal. It's for unique st
 var paddles
 
 const RESPAWN_AREA_GROUP = &"respawn_area"
+const PLUNGER_AREA_GROUP = &"plunger_area"
 const BALL_SPAWN_GROUP = &"ball_spawn"
 const BUMPER_GROUP = &"bumper"
 
@@ -30,6 +31,10 @@ func _ready():
 	var respawn_areas = get_tree().get_nodes_in_group(RESPAWN_AREA_GROUP)
 	for r in respawn_areas:
 		r.body_entered.connect(_on_respawn_ball)
+		
+	var plunger_areas = get_tree().get_nodes_in_group(PLUNGER_AREA_GROUP)
+	for r in plunger_areas:
+		r.body_entered.connect(_plungerReady)
 	
 	var bumpers = get_tree().get_nodes_in_group(BUMPER_GROUP)
 	for b in bumpers:
@@ -52,6 +57,9 @@ func _on_respawn_ball(ball):
 	score = 0
 	_update_ui()
 	_spawn_ball()
+	
+func _plungerReady(ball):
+	ball.launched = false
 
 func _on_paddle_bonk():
 	score += 100

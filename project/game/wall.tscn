@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwoyukoyw4e4d"]
+
+[ext_resource type="Texture2D" uid="uid://cbvi147u2de24" path="res://assets/GiantLightStudios - SimpleShapes/square_64.png" id="1_oyuut"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ne3n4"]
+size = Vector2(512, 64)
+
+[node name="Wall" type="StaticBody2D"]
+position = Vector2(1123, 419)
+rotation = 1.5708
+scale = Vector2(1.64481, 1)
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(8, 1)
+texture = ExtResource("1_oyuut")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ne3n4")
