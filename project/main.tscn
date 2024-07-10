@@ -1,16 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://wp31bdkw2ujt"]
+[gd_scene load_steps=14 format=3 uid="uid://wp31bdkw2ujt"]
 
 [ext_resource type="Script" path="res://game/gamemode.gd" id="1_8jxqk"]
 [ext_resource type="PackedScene" uid="uid://dhlm0r3kgrbs5" path="res://game/paddle.tscn" id="2_67h6p"]
 [ext_resource type="Texture2D" uid="uid://cbvi147u2de24" path="res://assets/GiantLightStudios - SimpleShapes/square_64.png" id="2_yg5sc"]
 [ext_resource type="PackedScene" uid="uid://bwoyukoyw4e4d" path="res://game/wall.tscn" id="3_kdlmg"]
 [ext_resource type="PackedScene" uid="uid://biuqxwo0rr4k7" path="res://game/bumper.tscn" id="4_ro6ew"]
-
 [ext_resource type="Script" path="res://MainMenu.gd" id="5_ttrjt"]
 [ext_resource type="Theme" uid="uid://cckteog731x5u" path="res://MainMenuTheme.tres" id="5_up4de"]
 [ext_resource type="Script" path="res://settings.gd" id="6_h4t5a"]
 [ext_resource type="Script" path="res://PauseMenu.gd" id="8_lfqy3"]
-
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hpi33"]
 size = Vector2(1149, 69)
@@ -136,6 +134,7 @@ debug_color = Color(0.519281, 0.520847, 0, 0.42)
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="MainMenu" type="MarginContainer" parent="UI"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -177,6 +176,7 @@ text = "Exit"
 alignment = 0
 
 [node name="Settings" type="Control" parent="UI"]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -259,6 +259,7 @@ text = "Toggle Mute"
 layout_mode = 2
 
 [node name="PauseMenu" type="MarginContainer" parent="UI"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -315,6 +316,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Lives: 0"
+label_settings = SubResource("LabelSettings_sdi16")
 
 [node name="ScoreLabel" type="Label" parent="UI/InGameUI/VBoxContainer"]
 unique_name_in_owner = true
@@ -324,23 +326,9 @@ size_flags_vertical = 0
 text = "Bonks: 0"
 label_settings = SubResource("LabelSettings_sdi16")
 
-
 [node name="HighScoreLabel" type="Label" parent="UI/InGameUI/VBoxContainer"]
-
-[node name="LivesLabel" type="Label" parent="UI/InGameUI/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-text = "Balls: 3"
-label_settings = SubResource("LabelSettings_sdi16")
-
-[node name="HighScoreLabel" type="Label" parent="UI/InGameUI/VBoxContainer"]
-
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
 text = "High Bonks: 0"
 label_settings = SubResource("LabelSettings_sdi16")
 
