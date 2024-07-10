@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://game/gamemode.gd" id="1_8jxqk"]
 [ext_resource type="PackedScene" uid="uid://dhlm0r3kgrbs5" path="res://game/paddle.tscn" id="2_67h6p"]
+[ext_resource type="Texture2D" uid="uid://cbvi147u2de24" path="res://assets/GiantLightStudios - SimpleShapes/square_64.png" id="2_yg5sc"]
 [ext_resource type="PackedScene" uid="uid://bwoyukoyw4e4d" path="res://game/wall.tscn" id="3_kdlmg"]
 [ext_resource type="PackedScene" uid="uid://biuqxwo0rr4k7" path="res://game/bumper.tscn" id="4_ro6ew"]
 
@@ -17,6 +18,8 @@ size = Vector2(1149, 69)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3deai"]
 size = Vector2(96, 74.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4f4ab"]
+
 [sub_resource type="LabelSettings" id="LabelSettings_sdi16"]
 font_size = 32
 outline_size = 3
@@ -26,6 +29,12 @@ outline_color = Color(0, 0, 0, 1)
 
 [node name="GameMode" type="Node" parent="."]
 script = ExtResource("1_8jxqk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.082281, 0.238396, 0.338666, 1)
+position = Vector2(1076, 305)
+scale = Vector2(3.04, 12.92)
+texture = ExtResource("2_yg5sc")
 
 [node name="World" type="Node2D" parent="."]
 
@@ -113,6 +122,16 @@ position = Vector2(304, 288)
 
 [node name="Bumper2" parent="World/Map" instance=ExtResource("4_ro6ew")]
 position = Vector2(602, 186)
+
+[node name="OneWayWall" type="StaticBody2D" parent="World/Map"]
+position = Vector2(990, 133)
+rotation = -1.57079
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Map/OneWayWall"]
+scale = Vector2(8.54347, 1.67622)
+shape = SubResource("RectangleShape2D_4f4ab")
+one_way_collision = true
+debug_color = Color(0.519281, 0.520847, 0, 0.42)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
