@@ -109,7 +109,6 @@ position = Vector2(304, 288)
 position = Vector2(602, 186)
 
 [node name="UI" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Menu" type="MarginContainer" parent="UI"]
 anchors_preset = 15
