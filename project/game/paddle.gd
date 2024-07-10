@@ -1,5 +1,7 @@
 extends AnimatableBody2D
 
+@onready var paddle_sfx = $PaddleSfx
+
 @onready var _base_angle = rotation_degrees
 var _tween
 @export var SLAP_ANGLE = 50
@@ -21,3 +23,6 @@ func _physics_process(delta):
 	
 	rotation = lerp_angle(rotation, deg_to_rad(target_angle), slapSpeed * delta)
 	
+	var just_slapped = (_is_left and Input.is_action_just_pressed("left")) or (not _is_left and Input.is_action_just_pressed("right"))
+	if just_slapped:
+		paddle_sfx.play()

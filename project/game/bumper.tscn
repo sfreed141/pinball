@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://biuqxwo0rr4k7"]
+[gd_scene load_steps=5 format=3 uid="uid://biuqxwo0rr4k7"]
 
 [ext_resource type="Script" path="res://game/bumper.gd" id="1_rl8m8"]
 [ext_resource type="Texture2D" uid="uid://btshpisa6xa25" path="res://assets/GiantLightStudios - SimpleShapes/circle_outline_eighth_64.png" id="1_tlpsh"]
+[ext_resource type="AudioStream" uid="uid://c2navx7vq7o4q" path="res://assets/sfx/PUNCH_PERCUSSIVE_HEAVY_08.wav" id="3_e7uqy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hswlc"]
 radius = 34.1321
@@ -17,5 +18,9 @@ shape = SubResource("CircleShape2D_hswlc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_tlpsh")
+
+[node name="BumperSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_e7uqy")
+bus = &"sfx"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

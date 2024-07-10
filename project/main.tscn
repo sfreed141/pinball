@@ -29,10 +29,11 @@ outline_color = Color(0, 0, 0, 1)
 [node name="GameMode" type="Node" parent="."]
 script = ExtResource("1_8jxqk")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_ui3t7")
 volume_db = -24.0
 autoplay = true
+bus = &"music"
 
 [node name="World" type="Node2D" parent="."]
 

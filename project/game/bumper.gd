@@ -5,6 +5,8 @@ signal bumped(sender)
 @export var strength = 2000
 @export var points = 200
 
+@onready var bumper_sfx = $BumperSfx
+
 const BUMPER_VFX = preload("res://game/bumper_vfx.tscn")
 
 func _on_body_entered(body):
@@ -24,6 +26,8 @@ func _on_body_entered(body):
 		add_child(vfx)
 		
 		_shake_screen()
+		
+		bumper_sfx.play()
 
 # https://shaggydev.com/2022/02/23/screen-shake-godot/
 var _camera
