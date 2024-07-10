@@ -20,7 +20,13 @@ var score: int = 0:
 	get:
 		return score
 var high_score = 0
-var lives = 3
+var lives: int = 3:
+	set(value):
+		if lives != value:
+			lives = value
+			_update_ui()
+	get:
+		return lives
 
 const PADDLE_GROUP = &"paddle"	# &"" is a StringName literal. It's for unique strings and is faster for comparisons.
 var paddles
@@ -66,9 +72,8 @@ func _on_respawn_ball(ball):
 	_spawn_ball()
 	lives -= 1
 	if (lives == 0):
-		print("Game Restarted")
 		high_score = score if score > high_score else high_score
-		score = 0
+		_restart_game()
 	
 func _plungerReady(ball):
 	ball.launched = false
@@ -86,3 +91,7 @@ func _update_ui():
 	score_label.text = "Bonks: %s" % [ score ]
 	lives_label.text = "Balls: %s" % [ lives ]
 
+func _restart_game():
+	print("Game Restarted")
+	score = 0
+	lives = 3
