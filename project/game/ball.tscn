@@ -8,6 +8,7 @@ radius = 16.0
 
 [node name="Ball" type="RigidBody2D"]
 collision_layer = 2
+can_sleep = false
 max_contacts_reported = 3
 contact_monitor = true
 script = ExtResource("1_unqcs")

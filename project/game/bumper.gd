@@ -22,3 +22,33 @@ func _on_body_entered(body):
 		vfx.emitting = true
 		vfx.finished.connect(vfx.queue_free)
 		add_child(vfx)
+		
+		_shake_screen()
+
+# https://shaggydev.com/2022/02/23/screen-shake-godot/
+var _camera
+var _rng = RandomNumberGenerator.new()
+var _noise = FastNoiseLite.new()
+const SHAKE_STRENGTH = 60
+const SHAKE_DECAY = 5
+const SHAKE_SPEED = 30
+var _shake_strength = 0
+var _noise_i = 0
+func _ready():
+	_rng.randomize()
+	_noise.seed = _rng.randi()
+
+func _shake_screen():
+	_shake_strength = SHAKE_STRENGTH
+
+func _process(delta):
+	_shake_strength = lerpf(_shake_strength, 0, SHAKE_DECAY * delta)
+	_noise_i += delta * SHAKE_SPEED
+	var shake_offset = _shake_strength * Vector2(
+		_noise.get_noise_2d(1, _noise_i),
+		_noise.get_noise_2d(100, _noise_i)
+	)
+	if not _camera:
+		_camera = get_viewport().get_camera_2d()
+	
+	_camera.offset = shake_offset

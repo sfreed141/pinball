@@ -61,11 +61,13 @@ func _ready():
 		p.visible = true
 		p = p.get_parent()
 
+	_update_ui()
+
 func _spawn_ball():
 	_ball = BALL_SCENE.instantiate()
 	_ball.bonk.connect(_on_paddle_bonk)
 	var spawn_point = get_tree().get_first_node_in_group(BALL_SPAWN_GROUP)
-	spawn_point.add_child(_ball)
+	spawn_point.add_child.call_deferred(_ball)
 
 func _on_respawn_ball(ball):
 	ball.queue_free()
