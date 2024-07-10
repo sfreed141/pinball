@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://wp31bdkw2ujt"]
+[gd_scene load_steps=15 format=3 uid="uid://wp31bdkw2ujt"]
 
 [ext_resource type="Script" path="res://game/gamemode.gd" id="1_8jxqk"]
 [ext_resource type="PackedScene" uid="uid://dhlm0r3kgrbs5" path="res://game/paddle.tscn" id="2_67h6p"]
+[ext_resource type="AudioStream" uid="uid://cj1arr6m0qxf6" path="res://assets/music/Stream Loops 2024-05-22.ogg" id="2_ui3t7"]
 [ext_resource type="Texture2D" uid="uid://cbvi147u2de24" path="res://assets/GiantLightStudios - SimpleShapes/square_64.png" id="2_yg5sc"]
 [ext_resource type="PackedScene" uid="uid://bwoyukoyw4e4d" path="res://game/wall.tscn" id="3_kdlmg"]
 [ext_resource type="PackedScene" uid="uid://biuqxwo0rr4k7" path="res://game/bumper.tscn" id="4_ro6ew"]
@@ -27,6 +28,11 @@ outline_color = Color(0, 0, 0, 1)
 
 [node name="GameMode" type="Node" parent="."]
 script = ExtResource("1_8jxqk")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ui3t7")
+volume_db = -24.0
+autoplay = true
 
 [node name="World" type="Node2D" parent="."]
 

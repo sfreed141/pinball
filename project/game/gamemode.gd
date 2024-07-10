@@ -11,7 +11,6 @@ extends Node
 @onready var highscore_label = %HighScoreLabel
 @onready var lives_label = %LivesLabel
 
-
 var score: int = 0:
 	set(value):
 		if score != value:
