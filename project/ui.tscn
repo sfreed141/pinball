@@ -224,7 +224,6 @@ layout_mode = 2
 
 [node name="InGameUI" type="MarginContainer" parent="."]
 unique_name_in_owner = true
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -259,8 +258,8 @@ layout_mode = 2
 text = "High Bonks: 0"
 label_settings = SubResource("LabelSettings_sdi16")
 
-[connection signal="pressed" from="MainMenu/HBoxContainer/VBoxContainer/RestartGameButton" to="MainMenu" method="_on_start_game_button_pressed"]
 [connection signal="pressed" from="MainMenu/HBoxContainer/VBoxContainer/RestartGameButton" to="MainMenu" method="_on_restart_game_button_pressed"]
+[connection signal="pressed" from="MainMenu/HBoxContainer/VBoxContainer/RestartGameButton" to="MainMenu" method="_on_start_game_button_pressed"]
 [connection signal="pressed" from="MainMenu/HBoxContainer/VBoxContainer/OptionsButton" to="MainMenu" method="_on_options_button_pressed"]
 [connection signal="pressed" from="MainMenu/HBoxContainer/VBoxContainer/ExitButton" to="MainMenu" method="_on_exit_button_pressed"]
 [connection signal="toggled" from="Settings/OptionsMenu/VBoxContainer2/VBoxContainer/HBoxContainer4/FullscreenBox" to="Settings" method="_on_fullscreen_box_toggled"]
