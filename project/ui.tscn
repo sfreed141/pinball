@@ -1,0 +1,275 @@
+[gd_scene load_steps=7 format=3 uid="uid://vp8hlqee7pm8"]
+
+[ext_resource type="Script" path="res://MainMenu.gd" id="1_073bh"]
+[ext_resource type="Script" path="res://ui.gd" id="1_p6w2b"]
+[ext_resource type="Script" path="res://settings.gd" id="3_gx163"]
+[ext_resource type="Script" path="res://OptionsMenu.gd" id="4_ol1ba"]
+[ext_resource type="Script" path="res://PauseMenu.gd" id="5_y66wq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_sdi16"]
+font_size = 32
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_p6w2b")
+
+[node name="MainMenu" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 69
+theme_override_constants/margin_top = 69
+theme_override_constants/margin_right = 90
+theme_override_constants/margin_bottom = 69
+script = ExtResource("1_073bh")
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMenu"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 3
+
+[node name="RestartGameButton" type="Button" parent="MainMenu/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Restart"
+alignment = 0
+
+[node name="OptionsButton" type="Button" parent="MainMenu/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Options"
+alignment = 0
+
+[node name="ExitButton" type="Button" parent="MainMenu/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Exit"
+alignment = 0
+
+[node name="Settings" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_gx163")
+
+[node name="OptionsMenu" type="MarginContainer" parent="Settings"]
+unique_name_in_owner = true
+layout_mode = 1
+offset_right = 291.0
+offset_bottom = 155.0
+theme_override_constants/margin_left = 69
+theme_override_constants/margin_top = 69
+theme_override_constants/margin_right = 69
+theme_override_constants/margin_bottom = 69
+script = ExtResource("4_ol1ba")
+
+[node name="ColorRect" type="ColorRect" parent="Settings/OptionsMenu"]
+layout_mode = 2
+color = Color(0.227949, 0.167072, 0.872656, 0.243137)
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Settings/OptionsMenu"]
+layout_mode = 2
+
+[node name="SettingsLabel" type="Label" parent="Settings/OptionsMenu/VBoxContainer2"]
+layout_mode = 2
+text = "Settings"
+
+[node name="HSeparator" type="HSeparator" parent="Settings/OptionsMenu/VBoxContainer2"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings/OptionsMenu/VBoxContainer2"]
+layout_mode = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Settings/OptionsMenu/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="FullscreenLabel" type="Label" parent="Settings/OptionsMenu/VBoxContainer2/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "Fullscreen: "
+
+[node name="FullscreenBox" type="CheckBox" parent="Settings/OptionsMenu/VBoxContainer2/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Settings/OptionsMenu/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="ResolutionLabel" type="Label" parent="Settings/OptionsMenu/VBoxContainer2/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "Resolution: "
+
+[node name="ResolutionBox" type="OptionButton" parent="Settings/OptionsMenu/VBoxContainer2/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+item_count = 3
+selected = 2
+popup/item_0/text = "1920x1080"
+popup/item_0/id = 0
+popup/item_1/text = "1600x900"
+popup/item_1/id = 1
+popup/item_2/text = "1280x720"
+popup/item_2/id = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Settings/OptionsMenu/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="MasterAudioLabel" type="Label" parent="Settings/OptionsMenu/VBoxContainer2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Master Volume: 
+"
+
+[node name="CenterContainer" type="CenterContainer" parent="Settings/OptionsMenu/VBoxContainer2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="MasterAudioSlider" type="HSlider" parent="Settings/OptionsMenu/VBoxContainer2/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+min_value = -72.0
+max_value = 6.0
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="Settings/OptionsMenu/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="MusicAudioLabel" type="Label" parent="Settings/OptionsMenu/VBoxContainer2/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+text = "Music Volume: 
+"
+
+[node name="CenterContainer" type="CenterContainer" parent="Settings/OptionsMenu/VBoxContainer2/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+
+[node name="MusicAudioSlider" type="HSlider" parent="Settings/OptionsMenu/VBoxContainer2/VBoxContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+min_value = -72.0
+max_value = 6.0
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="Settings/OptionsMenu/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="SFXAudioLabel" type="Label" parent="Settings/OptionsMenu/VBoxContainer2/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+text = "SFX Volume: 
+"
+
+[node name="CenterContainer" type="CenterContainer" parent="Settings/OptionsMenu/VBoxContainer2/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+
+[node name="SFXAudioSlider" type="HSlider" parent="Settings/OptionsMenu/VBoxContainer2/VBoxContainer/HBoxContainer6"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+min_value = -72.0
+max_value = 6.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Settings/OptionsMenu/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="MuteLabel" type="Label" parent="Settings/OptionsMenu/VBoxContainer2/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Toggle Mute"
+
+[node name="MuteBox" type="CheckBox" parent="Settings/OptionsMenu/VBoxContainer2/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="Settings/OptionsMenu/VBoxContainer2"]
+layout_mode = 2
+text = "Back"
+
+[node name="PauseMenu" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 69
+theme_override_constants/margin_top = 69
+script = ExtResource("5_y66wq")
+
+[node name="CenterContainer" type="CenterContainer" parent="PauseMenu"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = -5
+
+[node name="ResumeButton" type="Button" parent="PauseMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Resume"
+
+[node name="ResumeLabel" type="Label" parent="PauseMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SettingsButton" type="Button" parent="PauseMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+
+[node name="SettingsLabel" type="Label" parent="PauseMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="QuitButton" type="Button" parent="PauseMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="QuitLabel" type="Label" parent="PauseMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="InGameUI" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -15.0
+offset_right = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 69
+theme_override_constants/margin_top = 69
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InGameUI"]
+layout_mode = 2
+
+[node name="LivesLabel" type="Label" parent="InGameUI/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Lives: 0"
+label_settings = SubResource("LabelSettings_sdi16")
+
+[node name="ScoreLabel" type="Label" parent="InGameUI/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Bonks: 0"
+label_settings = SubResource("LabelSettings_sdi16")
+
+[node name="HighScoreLabel" type="Label" parent="InGameUI/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "High Bonks: 0"
+label_settings = SubResource("LabelSettings_sdi16")
+
+[connection signal="pressed" from="MainMenu/HBoxContainer/VBoxContainer/RestartGameButton" to="MainMenu" method="_on_start_game_button_pressed"]
+[connection signal="pressed" from="MainMenu/HBoxContainer/VBoxContainer/RestartGameButton" to="MainMenu" method="_on_restart_game_button_pressed"]
+[connection signal="pressed" from="MainMenu/HBoxContainer/VBoxContainer/OptionsButton" to="MainMenu" method="_on_options_button_pressed"]
+[connection signal="pressed" from="MainMenu/HBoxContainer/VBoxContainer/ExitButton" to="MainMenu" method="_on_exit_button_pressed"]
+[connection signal="toggled" from="Settings/OptionsMenu/VBoxContainer2/VBoxContainer/HBoxContainer4/FullscreenBox" to="Settings" method="_on_fullscreen_box_toggled"]
+[connection signal="item_selected" from="Settings/OptionsMenu/VBoxContainer2/VBoxContainer/HBoxContainer3/ResolutionBox" to="Settings" method="_on_resolution_box_item_selected"]
+[connection signal="value_changed" from="Settings/OptionsMenu/VBoxContainer2/VBoxContainer/HBoxContainer/MasterAudioSlider" to="Settings" method="_on_audio_slider_value_changed"]
+[connection signal="value_changed" from="Settings/OptionsMenu/VBoxContainer2/VBoxContainer/HBoxContainer5/MusicAudioSlider" to="Settings" method="_on_music_audio_slider_value_changed"]
+[connection signal="value_changed" from="Settings/OptionsMenu/VBoxContainer2/VBoxContainer/HBoxContainer5/MusicAudioSlider" to="Settings" method="_on_audio_slider_value_changed"]
+[connection signal="value_changed" from="Settings/OptionsMenu/VBoxContainer2/VBoxContainer/HBoxContainer6/SFXAudioSlider" to="Settings" method="_on_sfx_audio_slider_value_changed"]
+[connection signal="value_changed" from="Settings/OptionsMenu/VBoxContainer2/VBoxContainer/HBoxContainer6/SFXAudioSlider" to="Settings" method="_on_audio_slider_value_changed"]
+[connection signal="toggled" from="Settings/OptionsMenu/VBoxContainer2/VBoxContainer/HBoxContainer2/MuteBox" to="Settings" method="_on_mute_box_toggled"]
+[connection signal="pressed" from="Settings/OptionsMenu/VBoxContainer2/BackButton" to="Settings/OptionsMenu" method="_on_back_button_pressed"]
+[connection signal="pressed" from="PauseMenu/CenterContainer/VBoxContainer/QuitButton" to="PauseMenu" method="_on_quit_button_pressed"]

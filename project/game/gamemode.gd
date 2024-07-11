@@ -6,10 +6,10 @@ extends Node
 # 1. Groups: In the Node window, add a group to the desired node. Then you can access in code like get_tree().get_first_node_in_group()
 # 2. Unique Names: in Scene window, "RMB | Access as Unique Name" and then can reference like %MyNode.
 
-@onready var ingame_ui = %InGameUI
-@onready var score_label = %ScoreLabel
-@onready var highscore_label = %HighScoreLabel
-@onready var lives_label = %LivesLabel
+@onready var ingame_ui = %UI.ingame_ui
+@onready var score_label = %UI.score_label
+@onready var highscore_label = %UI.highscore_label
+@onready var lives_label = %UI.lives_label
 
 var score: int = 0:
 	set(value):
@@ -39,6 +39,7 @@ const BALL_SCENE = preload("res://game/ball.tscn")
 var _ball
 
 func _ready():
+	print("gamemode")
 	paddles = get_tree().get_nodes_in_group(PADDLE_GROUP)
 	
 	_spawn_ball()
@@ -55,10 +56,15 @@ func _ready():
 	for b in bumpers:
 		b.bumped.connect(_on_bumper_bumped)
 	
-	var p = ingame_ui
-	while p is CanvasItem or p is CanvasLayer:
-		p.visible = true
-		p = p.get_parent()
+	await get_tree().process_frame
+	ingame_ui = %UI.ingame_ui
+	score_label = %UI.score_label
+	highscore_label = %UI.highscore_label
+	lives_label = %UI.lives_label
+	#var p = ingame_ui
+	#while p is CanvasItem or p is CanvasLayer:
+		#p.visible = true
+		#p = p.get_parent()
 
 	_update_ui()
 
