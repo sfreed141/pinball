@@ -68,6 +68,9 @@ func _ready():
 
 	_update_ui()
 
+#func _process(delta):
+	#_update_ui()
+	
 func _spawn_ball():
 	_ball = BALL_SCENE.instantiate()
 	_ball.bonk.connect(_on_paddle_bonk)
